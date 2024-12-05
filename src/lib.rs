@@ -1,5 +1,8 @@
+use auto::{process_auto_debug, process_auto_deref};
 // proc macro crate
 use quote::quote;
+
+mod auto;
 
 // for enum, we'd like to generate From impls for each variant
 #[allow(unused)]
@@ -46,4 +49,19 @@ pub fn derive_enum_from(input: proc_macro::TokenStream) -> proc_macro::TokenStre
     quote! {
         #(#from_impls)*
     }.into()
+}
+
+
+#[proc_macro_derive(AutoDeref, attributes(deref))]
+pub fn derive_auto_deref(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+  let input = syn::parse_macro_input!(input as syn::DeriveInput);
+  
+  process_auto_deref(input).into()
+}
+
+#[proc_macro_derive(AutoDebug, attributes(debug))]
+pub fn derive_auto_debug(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+  let input = syn::parse_macro_input!(input as syn::DeriveInput);
+  
+  process_auto_debug(input).into()
 }

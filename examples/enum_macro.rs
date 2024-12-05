@@ -1,13 +1,6 @@
 use macros::EnumFrom;
 
 #[allow(unused)]
-#[derive(EnumFrom, Debug)]
-enum Direction<T> {
-  Up(DirectionUp<T>),
-  Down,
-}
-
-#[allow(unused)]
 #[derive(Debug)]
 struct DirectionUp<T> {
   speed: T,
