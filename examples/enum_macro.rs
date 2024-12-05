@@ -3,16 +3,13 @@ use macros::EnumFrom;
 #[allow(unused)]
 #[derive(Debug)]
 struct DirectionUp<T> {
-  speed: T,
+    speed: T,
 }
 
-fn main() {
-  let up: Direction<i32> = DirectionUp::new(32).into();
-  println!("{:?}", up);
-}
+fn main() {}
 
 impl<T> DirectionUp<T> {
-  fn new(speed: T) -> Self {
-    Self { speed }
-  }
+    fn new(speed: T) -> Self {
+        Self { speed }
+    }
 }

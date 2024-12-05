@@ -10,6 +10,6 @@ macro_rules! my_vec {
 }
 
 fn main() {
-  let v = my_vec!{1,3,5};
-  println!("{:?}", v);
+    let v = my_vec! {1,3,5};
+    println!("{:?}", v);
 }

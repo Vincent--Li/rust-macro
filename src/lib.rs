@@ -48,20 +48,20 @@ pub fn derive_enum_from(input: proc_macro::TokenStream) -> proc_macro::TokenStre
     // quote return proce-macro2 TokenTtream so we need to convert it to TokenStream
     quote! {
         #(#from_impls)*
-    }.into()
+    }
+    .into()
 }
-
 
 #[proc_macro_derive(AutoDeref, attributes(deref))]
 pub fn derive_auto_deref(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-  let input = syn::parse_macro_input!(input as syn::DeriveInput);
-  
-  process_auto_deref(input).into()
+    let input = syn::parse_macro_input!(input as syn::DeriveInput);
+    println!("{:#?}", input);
+    process_auto_deref(input).into()
 }
 
 #[proc_macro_derive(AutoDebug, attributes(debug))]
 pub fn derive_auto_debug(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
-  let input = syn::parse_macro_input!(input as syn::DeriveInput);
-  
-  process_auto_debug(input).into()
+    let input = syn::parse_macro_input!(input as syn::DeriveInput);
+
+    process_auto_debug(input).into()
 }
