@@ -2,6 +2,7 @@
 use quote::quote;
 
 // for enum, we'd like to generate From impls for each variant
+#[allow(unused)]
 #[proc_macro_derive(EnumFrom)]
 pub fn derive_enum_from(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let input = syn::parse_macro_input!(input as syn::DeriveInput);

@@ -2,24 +2,24 @@ use macros::EnumFrom;
 
 #[allow(unused)]
 #[derive(EnumFrom, Debug)]
-enum Direction {
-  Up(DirectionUp),
+enum Direction<T> {
+  Up(DirectionUp<T>),
   Down,
 }
 
 #[allow(unused)]
 #[derive(Debug)]
-struct DirectionUp {
-  speed: u32,
+struct DirectionUp<T> {
+  speed: T,
 }
 
 fn main() {
-  let up: Direction = DirectionUp::new(32).into();
+  let up: Direction<i32> = DirectionUp::new(32).into();
   println!("{:?}", up);
 }
 
-impl DirectionUp {
-  fn new(speed: u32) -> Self {
-    DirectionUp { speed }
+impl<T> DirectionUp<T> {
+  fn new(speed: T) -> Self {
+    Self { speed }
   }
 }
